@@ -81,7 +81,10 @@ WSGI_APPLICATION = 'CRUD.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': dj_database_url.config(
+        default = "postgres://task_app_oshg_user:J45ZxOJ05jKiEcywvWXTpqTMNJeqrWku@dpg-ceq8b0sgqg43st44v6cg-a/task_app_oshg",
+        conn_max_age=600
+    )
 }
 
 
