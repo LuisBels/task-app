@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     tasks = Task.objects.filter(user=request.user)
     return render(request, "tasks/home.html", {
-        "task": tasks
+        "tasks": tasks
     })
 
 
