@@ -12,7 +12,10 @@ from django.contrib.auth.decorators import login_required
 
 
 def home(request):
-    return render(request, "tasks/home.html")
+    tasks = Task.objects.filter(user=request.user)
+    return render(request, "tasks/home.html", {
+        "task": tasks
+    })
 
 
 def signup(request):
@@ -49,7 +52,7 @@ def tasks(request):
 @login_required
 def tasks_completed(request):
     tasks = Task.objects.filter(user=request.user, datecompleted__isnull=False)
-    return render(request, "tasks/tasks.html", {"tasks":tasks})
+    return render(request, "tasks/task_completed.html", {"tasks":tasks})
 
 @login_required
 def task_detail(request, task_id):
